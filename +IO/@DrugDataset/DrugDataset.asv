@@ -1,0 +1,28 @@
+classdef DrugDataset
+    %DRUGDATASET Class that stores info about IO Datasets
+    %   Holds the file path, DrugList, DrugTable, DrugArray
+    
+    properties
+        DrugTable %table of all of the drug data
+        DrugArray % DrugTable without nonNumeric values
+        DrugList %List of Drugs and Drugendpoints
+
+    end
+    
+    methods
+        function obj = DrugDataset(table)
+            %DRUGDATASET Construct an instance of this class
+            obj.DrugTable = table;
+        end
+        
+        function obj = JoinDrugDataset(obj, table2)
+            %JOINDRUGDATASET Join the new table to DrugTable
+            obj.DrugTable = join(obj.AllDrugTable,table2);
+
+        function outputArg = constructDrugArray(obj,inputArg)
+            %CONSTRUCTDRUGARRAY Creates the DrugArray from DrugTable
+            obj.DrugArray = table2array(DrugTable(:,2:end));
+        end
+    end
+end
+
